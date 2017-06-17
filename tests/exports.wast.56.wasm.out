@@ -1,0 +1,5 @@
+(module
+  (memory 0)
+  (export "a" memory)
+  (export "b" memory)
+)

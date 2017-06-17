@@ -1,0 +1,3 @@
+(module
+  (import $global0 (global i32))
+)

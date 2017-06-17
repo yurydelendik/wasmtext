@@ -1,0 +1,3 @@
+(module
+  (import $table0 "test" "global-i32" (table 10 anyfunc))
+)

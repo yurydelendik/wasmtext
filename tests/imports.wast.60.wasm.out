@@ -1,0 +1,3 @@
+(module
+  (import $table0 "test" "unknown" (table 10 anyfunc))
+)

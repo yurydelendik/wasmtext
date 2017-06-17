@@ -1,0 +1,9 @@
+(module
+  (type $type0 (func))
+  (export "a" $func0)
+  (export "b" $func1)
+  (func $func0
+  )
+  (func $func1
+  )
+)

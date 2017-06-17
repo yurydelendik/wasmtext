@@ -1,0 +1,13 @@
+(module
+  (type $type0 (func (result i32)))
+  (import $global0 (global i32))
+  (import $import0 "Mg" "get" (func (result i32)))
+  (global $global1 i32 (i32.const 43))
+  (export "Mg.glob" (global $global0))
+  (export "Mg.get" $import0)
+  (export "glob" (global $global1))
+  (export "get" $func1)
+  (func $func1 (result i32)
+    get_global $global1
+  )
+)

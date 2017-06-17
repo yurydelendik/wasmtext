@@ -1,0 +1,25 @@
+(module
+  (type $type0 (func (result i32)))
+  (import $global0 (global i32))
+  (import $global1 (global i32))
+  (import $global2 (global i32))
+  (import $global3 (global i32))
+  (import $global4 (global f32))
+  (import $global5 (global f64))
+  (export "get-0" $func0)
+  (export "get-1" $func1)
+  (export "get-x" $func2)
+  (export "get-y" $func3)
+  (func $func0 (result i32)
+    get_global $global0
+  )
+  (func $func1 (result i32)
+    get_global $global1
+  )
+  (func $func2 (result i32)
+    get_global $global2
+  )
+  (func $func3 (result i32)
+    get_global $global3
+  )
+)
