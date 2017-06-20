@@ -27,7 +27,7 @@
     block
       nop
     end
-    block i32
+    block (result i32)
       i32.const 7
     end
   )
@@ -38,7 +38,7 @@
       call $func0
       call $func0
     end
-    block i32
+    block (result i32)
       call $func0
       call $func0
       call $func0
@@ -46,58 +46,58 @@
     end
   )
   (func $func4 (result i32)
-    block i32
+    block (result i32)
       block
         call $func0
         block
         end
         nop
       end
-      block i32
+      block (result i32)
         call $func0
         i32.const 9
       end
     end
   )
   (func $func5 (result i32)
-    block i32
-      block i32
-        block i32
-          block i32
-            block i32
-              block i32
-                block i32
-                  block i32
-                    block i32
-                      block i32
-                        block i32
-                          block i32
-                            block i32
-                              block i32
-                                block i32
-                                  block i32
-                                    block i32
-                                      block i32
-                                        block i32
-                                          block i32
-                                            block i32
-                                              block i32
-                                                block i32
-                                                  block i32
-                                                    block i32
-                                                      block i32
-                                                        block i32
-                                                          block i32
-                                                            block i32
-                                                              block i32
-                                                                block i32
-                                                                  block i32
-                                                                    block i32
-                                                                      block i32
-                                                                        block i32
-                                                                          block i32
-                                                                            block i32
-                                                                              block i32
+    block (result i32)
+      block (result i32)
+        block (result i32)
+          block (result i32)
+            block (result i32)
+              block (result i32)
+                block (result i32)
+                  block (result i32)
+                    block (result i32)
+                      block (result i32)
+                        block (result i32)
+                          block (result i32)
+                            block (result i32)
+                              block (result i32)
+                                block (result i32)
+                                  block (result i32)
+                                    block (result i32)
+                                      block (result i32)
+                                        block (result i32)
+                                          block (result i32)
+                                            block (result i32)
+                                              block (result i32)
+                                                block (result i32)
+                                                  block (result i32)
+                                                    block (result i32)
+                                                      block (result i32)
+                                                        block (result i32)
+                                                          block (result i32)
+                                                            block (result i32)
+                                                              block (result i32)
+                                                                block (result i32)
+                                                                  block (result i32)
+                                                                    block (result i32)
+                                                                      block (result i32)
+                                                                        block (result i32)
+                                                                          block (result i32)
+                                                                            block (result i32)
+                                                                              block (result i32)
                                                                                 call $func0
                                                                                 i32.const 150
                                                                               end
@@ -140,36 +140,36 @@
     end
   )
   (func $func6 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 13
     end
     i32.ctz
   )
   (func $func7 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 3
     end
-    block i32
+    block (result i32)
       call $func0
       i32.const 4
     end
     i32.mul
   )
   (func $func8 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 13
     end
     i32.eqz
   )
   (func $func9 (result i32)
-    block f32
+    block (result f32)
       call $func0
       f32.const 0x1.800000p1
     end
-    block f32
+    block (result f32)
       call $func0
       f32.const 0x1.800000p1
     end
@@ -198,14 +198,14 @@
     i32.const 19
   )
   (func $func11 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 18
       br $label0
       i32.const 19
     end $label0
   )
   (func $func12 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 18
       br $label0
       i32.const 19
@@ -234,8 +234,8 @@
     i32.const 0
     set_local $var0
     get_local $var0
-    block $label0 i32
-      block i32
+    block $label0 (result i32)
+      block (result i32)
         i32.const 1
         br $label0
       end
@@ -243,7 +243,7 @@
     i32.add
     set_local $var0
     get_local $var0
-    block i32
+    block (result i32)
       block $label1
         br $label1
       end $label1
@@ -252,7 +252,7 @@
     i32.add
     set_local $var0
     get_local $var0
-    block $label2 i32
+    block $label2 (result i32)
       i32.const 4
       br $label2
       i32.ctz
@@ -260,8 +260,8 @@
     i32.add
     set_local $var0
     get_local $var0
-    block $label3 i32
-      block i32
+    block $label3 (result i32)
+      block (result i32)
         i32.const 8
         br $label3
       end

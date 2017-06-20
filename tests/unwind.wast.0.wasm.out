@@ -90,7 +90,7 @@
     i32.const 9
   )
   (func $func8 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 3
       i64.const 1
       i32.const 9
@@ -107,7 +107,7 @@
     i32.const 9
   )
   (func $func10 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 3
       i64.const 1
       i32.const 9
@@ -116,7 +116,7 @@
     end $label0
   )
   (func $func11 (result i32)
-    block i32
+    block (result i32)
       i32.const 3
       i64.const 1
       i32.const 9
@@ -124,7 +124,7 @@
     end
   )
   (func $func12 (result i32)
-    block i32
+    block (result i32)
       i32.const 3
       block
         i64.const 1
@@ -144,7 +144,7 @@
     i32.const 9
   )
   (func $func14 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 3
       block
         i64.const 1
@@ -166,7 +166,7 @@
     i32.const 9
   )
   (func $func16 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 3
       block
         i64.const 1
@@ -177,7 +177,7 @@
     end $label0
   )
   (func $func17 (result i32)
-    block i32
+    block (result i32)
       i32.const 3
       block
         i64.const 1
@@ -192,7 +192,7 @@
     i64.eqz
   )
   (func $func19 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       i32.const 9
       br $label0
@@ -200,7 +200,7 @@
     end $label0
   )
   (func $func20 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       i32.const 9
       i32.const 0
@@ -221,7 +221,7 @@
     i64.eq
   )
   (func $func23 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       f64.const 0x1.0000000000000p0
       i32.const 9
@@ -230,7 +230,7 @@
     end $label0
   )
   (func $func24 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       f64.const 0x1.0000000000000p0
       i32.const 9
@@ -254,7 +254,7 @@
     select
   )
   (func $func27 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       f64.const 0x1.0000000000000p0
       i64.const 0
@@ -264,7 +264,7 @@
     end $label0
   )
   (func $func28 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       f64.const 0x1.0000000000000p0
       i64.const 0
@@ -283,20 +283,20 @@
     select
   )
   (func $func30 (result i32)
-    block i32
+    block (result i32)
       f32.const 0.0
       unreachable
     end
   )
   (func $func31 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       i32.const 9
       br $label0
     end $label0
   )
   (func $func32 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       f32.const 0.0
       i32.const 9
       i32.const 0
@@ -304,21 +304,21 @@
     end $label0
   )
   (func $func33 (result i32)
-    block i32
+    block (result i32)
       f32.const 0.0
       i32.const 9
       return
     end
   )
   (func $func34 (result i32)
-    loop i32
+    loop (result i32)
       f32.const 0.0
       unreachable
     end
   )
   (func $func35 (result i32)
-    block $label0 i32
-      loop i32
+    block $label0 (result i32)
+      loop (result i32)
         f32.const 0.0
         i32.const 9
         br $label0
@@ -326,8 +326,8 @@
     end $label0
   )
   (func $func36 (result i32)
-    block $label0 i32
-      loop i32
+    block $label0 (result i32)
+      loop (result i32)
         f32.const 0.0
         i32.const 9
         i32.const 0
@@ -336,7 +336,7 @@
     end $label0
   )
   (func $func37 (result i32)
-    loop i32
+    loop (result i32)
       f32.const 0.0
       i32.const 9
       return

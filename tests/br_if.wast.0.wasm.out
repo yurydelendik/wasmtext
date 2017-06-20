@@ -50,7 +50,7 @@
     end $label0
   )
   (func $func4 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 10
       get_local $var0
       br_if $label0
@@ -60,7 +60,7 @@
     end $label0
   )
   (func $func5 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       call $func0
       i32.const 20
       get_local $var0
@@ -71,7 +71,7 @@
     end $label0
   )
   (func $func6 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       call $func0
       call $func0
       i32.const 11
@@ -133,11 +133,11 @@
   )
   (func $func12 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
       i32.const 4
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0
@@ -150,10 +150,10 @@
   )
   (func $func13 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0
@@ -167,10 +167,10 @@
   )
   (func $func14 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0
@@ -186,11 +186,11 @@
   )
   (func $func15 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
       i32.const 4
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0
@@ -205,10 +205,10 @@
   )
   (func $func16 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0
@@ -223,11 +223,11 @@
   )
   (func $func17 (param $var0 i32) (result i32)
     i32.const 1
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 2
       drop
       i32.const 4
-      block i32
+      block (result i32)
         i32.const 8
         get_local $var0
         br_if $label0

@@ -13,7 +13,7 @@
     get_local $var0
     get_local $var1
     f32.lt
-    if f32
+    if (result f32)
       get_local $var0
     else
       get_local $var1
@@ -23,7 +23,7 @@
     get_local $var0
     get_local $var1
     f32.le
-    if f32
+    if (result f32)
       get_local $var0
     else
       get_local $var1
@@ -33,7 +33,7 @@
     get_local $var0
     get_local $var1
     f32.gt
-    if f32
+    if (result f32)
       get_local $var0
     else
       get_local $var1
@@ -43,7 +43,7 @@
     get_local $var0
     get_local $var1
     f32.ge
-    if f32
+    if (result f32)
       get_local $var0
     else
       get_local $var1
@@ -53,7 +53,7 @@
     get_local $var0
     get_local $var1
     f64.lt
-    if f64
+    if (result f64)
       get_local $var0
     else
       get_local $var1
@@ -63,7 +63,7 @@
     get_local $var0
     get_local $var1
     f64.le
-    if f64
+    if (result f64)
       get_local $var0
     else
       get_local $var1
@@ -73,7 +73,7 @@
     get_local $var0
     get_local $var1
     f64.gt
-    if f64
+    if (result f64)
       get_local $var0
     else
       get_local $var1
@@ -83,7 +83,7 @@
     get_local $var0
     get_local $var1
     f64.ge
-    if f64
+    if (result f64)
       get_local $var0
     else
       get_local $var1

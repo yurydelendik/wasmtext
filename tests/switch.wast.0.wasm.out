@@ -55,7 +55,7 @@
     (local $var1 i64)
     i64.const 100
     set_local $var1
-    block $label9 i64
+    block $label9 (result i64)
       block $label7
         block $label8
           block $label4
@@ -93,13 +93,13 @@
     return
   )
   (func $func2 (param $var0 i32) (result i32)
-    block $label2 i32
+    block $label2 (result i32)
       i32.const 10
-      block $label1 i32
+      block $label1 (result i32)
         i32.const 100
-        block $label0 i32
+        block $label0 (result i32)
           i32.const 1000
-          block $label3 i32
+          block $label3 (result i32)
             i32.const 2
             get_local $var0
             i32.mul

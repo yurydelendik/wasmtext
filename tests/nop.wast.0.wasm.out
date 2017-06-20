@@ -132,20 +132,20 @@
     select
   )
   (func $func12 (result i32)
-    block i32
+    block (result i32)
       nop
       i32.const 2
     end
   )
   (func $func13 (result i32)
-    block i32
+    block (result i32)
       call $func0
       nop
       i32.const 2
     end
   )
   (func $func14 (result i32)
-    block i32
+    block (result i32)
       nop
       call $func0
       i32.const 3
@@ -153,7 +153,7 @@
     end
   )
   (func $func15 (result i32)
-    block i32
+    block (result i32)
       nop
       nop
       call $func0
@@ -164,27 +164,27 @@
     end
   )
   (func $func16 (result i32)
-    loop i32
+    loop (result i32)
       nop
       i32.const 2
     end
   )
   (func $func17 (result i32)
-    loop i32
+    loop (result i32)
       call $func0
       nop
       i32.const 2
     end
   )
   (func $func18 (result i32)
-    loop i32
+    loop (result i32)
       call $func0
       i32.const 3
       nop
     end
   )
   (func $func19 (result i32)
-    loop i32
+    loop (result i32)
       nop
       nop
       call $func0
@@ -218,14 +218,14 @@
     end
   )
   (func $func23 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       get_local $var0
       nop
       br $label0
     end $label0
   )
   (func $func24 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       nop
       nop
       get_local $var0
@@ -235,7 +235,7 @@
     end $label0
   )
   (func $func25 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       get_local $var0
       nop
       get_local $var0
@@ -243,7 +243,7 @@
     end $label0
   )
   (func $func26 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       get_local $var0
       get_local $var0
       nop
@@ -251,7 +251,7 @@
     end $label0
   )
   (func $func27 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       nop
       nop
       get_local $var0
@@ -264,7 +264,7 @@
     end $label0
   )
   (func $func28 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       get_local $var0
       nop
       get_local $var0
@@ -272,7 +272,7 @@
     end $label0
   )
   (func $func29 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       get_local $var0
       get_local $var0
       nop
@@ -280,7 +280,7 @@
     end $label0
   )
   (func $func30 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       nop
       nop
       get_local $var0

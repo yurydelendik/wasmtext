@@ -307,8 +307,9 @@ impl<'a> Writer<'a> {
         if let Type::EmptyBlockType = block_type {
             return Ok(());
         }
-        self.write_bytes(b" ")?;
-        self.write_type(block_type)
+        self.write_bytes(b" (result ")?;
+        self.write_type(block_type)?;
+        self.write_bytes(b")")
     }
 
     fn write_memory_immediate(&mut self,

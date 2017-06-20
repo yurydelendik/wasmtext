@@ -1048,7 +1048,7 @@
     call $func10
   )
   (func $func128 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       call $func8
       call $func11
       call $func12
@@ -1060,9 +1060,9 @@
     end $label0
   )
   (func $func129 (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       call $func8
-      block $label1 i32
+      block $label1 (result i32)
         call $func11
         call $func12
         br_table $label0 $label1

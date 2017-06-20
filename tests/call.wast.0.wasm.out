@@ -120,7 +120,7 @@
   (func $func24 (param $var0 i64) (result i64)
     get_local $var0
     i64.eqz
-    if i64
+    if (result i64)
       i64.const 1
     else
       get_local $var0
@@ -134,7 +134,7 @@
   (func $func25 (param $var0 i64) (param $var1 i64) (result i64)
     get_local $var0
     i64.eqz
-    if i64
+    if (result i64)
       get_local $var1
     else
       get_local $var0
@@ -150,7 +150,7 @@
     get_local $var0
     i64.const 1
     i64.le_u
-    if i64
+    if (result i64)
       i64.const 1
     else
       get_local $var0
@@ -167,7 +167,7 @@
   (func $func27 (param $var0 i64) (result i32)
     get_local $var0
     i64.eqz
-    if i32
+    if (result i32)
       i32.const 44
     else
       get_local $var0
@@ -179,7 +179,7 @@
   (func $func28 (param $var0 i64) (result i32)
     get_local $var0
     i64.eqz
-    if i32
+    if (result i32)
       i32.const 99
     else
       get_local $var0

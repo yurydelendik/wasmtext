@@ -255,7 +255,7 @@
     end
   )
   (func $func48 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 77
     end
@@ -280,7 +280,7 @@
     return
   )
   (func $func54 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 77
     end
@@ -306,7 +306,7 @@
     br 0
   )
   (func $func60 (result i32)
-    block i32
+    block (result i32)
       call $func0
       i32.const 77
     end
@@ -340,7 +340,7 @@
     end $label0
   )
   (func $func66 (param $var0 i32) (result i32)
-    block $label0 i32
+    block $label0 (result i32)
       i32.const 50
       get_local $var0
       br_table $label0 1 $label0
