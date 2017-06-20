@@ -7,7 +7,7 @@
     get_local $var0
     get_local $var1
     get_local $var2
-    f32.qqrt
+    f32.sqrt
     f32.add
     f32.mul
   )

@@ -638,7 +638,7 @@ impl<'a> Writer<'a> {
             Operator::F32Floor => self.write_bytes(b"f32.floor"),
             Operator::F32Trunc => self.write_bytes(b"f32.trunc"),
             Operator::F32Nearest => self.write_bytes(b"f32.nearest"),
-            Operator::F32Sqrt => self.write_bytes(b"f32.qqrt"),
+            Operator::F32Sqrt => self.write_bytes(b"f32.sqrt"),
             Operator::F32Add => self.write_bytes(b"f32.add"),
             Operator::F32Sub => self.write_bytes(b"f32.sub"),
             Operator::F32Mul => self.write_bytes(b"f32.mul"),

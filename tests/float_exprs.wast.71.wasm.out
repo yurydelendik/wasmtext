@@ -7,7 +7,7 @@
     get_local $var0
     get_local $var0
     f32.mul
-    f32.qqrt
+    f32.sqrt
   )
   (func $func1 (param $var0 f64) (result f64)
     get_local $var0

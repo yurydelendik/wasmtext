@@ -5,6 +5,6 @@
     f32.const 0x1.000000p0
     get_local $var0
     f32.div
-    f32.qqrt
+    f32.sqrt
   )
 )

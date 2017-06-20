@@ -34,7 +34,7 @@
   )
   (func $func4 (param $var0 f32) (result f32)
     get_local $var0
-    f32.qqrt
+    f32.sqrt
   )
   (func $func5 (param $var0 f32) (param $var1 f32) (result f32)
     get_local $var0
