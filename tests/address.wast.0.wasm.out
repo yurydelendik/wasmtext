@@ -47,7 +47,7 @@
   )
   (func $func2 (param $var0 i32)
     get_local $var0
-    i32.load offset=-1
+    i32.load offset=4294967295
     drop
   )
   (data (i32.const 0)

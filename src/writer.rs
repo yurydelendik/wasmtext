@@ -328,7 +328,7 @@ impl<'a> Writer<'a> {
                               -> Result<()> {
         if memory_immediate.offset != 0 {
             self.write_bytes(b" offset=")?;
-            self.write_i32(memory_immediate.offset as i32)?;
+            self.write_u32(memory_immediate.offset)?;
         }
         if memory_immediate.flags != default_align_flags {
             // hide default flags
