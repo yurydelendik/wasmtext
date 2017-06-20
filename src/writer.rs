@@ -232,7 +232,6 @@ impl<'a> Writer<'a> {
 
     fn write_func_type(&mut self, func_type: &FuncType) -> Result<()> {
         if let Type::Func = func_type.form {
-            self.write_bytes(b"(func")?;
             if func_type.params.len() > 0 {
                 self.write_bytes(b" (param")?;
                 for i in 0..func_type.params.len() {
@@ -249,7 +248,6 @@ impl<'a> Writer<'a> {
                 }
                 self.write_bytes(b")")?;
             }
-            self.write_bytes(b")")?;
         } else {
             panic!("NYI other function form");
         }
@@ -715,7 +713,9 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b" ")?;
                 match *kind {
                     ExternalKind::Function => {
+                        self.write_bytes(b"(func ")?;
                         self.write_func_name_ref(index)?;
+                        self.write_bytes(b")")?;
                     }
                     ExternalKind::Table => {
                         self.w().write_fmt(format_args!("(table {})", index))?;
@@ -744,12 +744,12 @@ impl<'a> Writer<'a> {
                         let index = self.func_index as u32;
                         self.func_index += 1;
                         self.import_count += 1;
-                        self.write_bytes(&get_func_name(index, true, false))?;
-                        self.write_bytes(b" ")?;
                         self.write_import_source(module, field)?;
-                        self.write_bytes(b" ")?;
+                        self.write_bytes(b" (func ")?;
+                        self.write_bytes(&get_func_name(index, true, false))?;
                         let ty = self.types[type_index as usize].clone();
                         self.write_func_type(&ty)?;
+                        self.write_bytes(b")")?;
                     }
                     ImportSectionEntryType::Table(ref table_type) => {
                         self.write_bytes(&get_table_name(0, false))?;
@@ -783,9 +783,9 @@ impl<'a> Writer<'a> {
                 let index = self.types.len() as u32;
                 self.types.push(ty.clone());
                 self.write_bytes(&get_type_name(index, false))?;
-                self.write_bytes(b" ")?;
+                self.write_bytes(b" (func")?;
                 self.write_func_type(ty)?;
-                self.write_bytes(b")\n")?;
+                self.write_bytes(b"))\n")?;
             }
             ParserState::TableSectionEntry(TableType {
                                                element_type,

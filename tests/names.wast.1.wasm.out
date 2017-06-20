@@ -1,6 +1,6 @@
 (module
   (type $type0 (func (result i32)))
-  (export "foo" $func0)
+  (export "foo" (func $func0))
   (func $func0 (result i32)
     i32.const 1
   )

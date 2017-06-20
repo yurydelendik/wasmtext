@@ -1,10 +1,10 @@
 (module
   (type $type0 (func (param i32) (result i32)))
   (type $type1 (func (param i64) (result i64)))
-  (export "i32.no_fold_div_s_mul" $func0)
-  (export "i32.no_fold_div_u_mul" $func1)
-  (export "i64.no_fold_div_s_mul" $func2)
-  (export "i64.no_fold_div_u_mul" $func3)
+  (export "i32.no_fold_div_s_mul" (func $func0))
+  (export "i32.no_fold_div_u_mul" (func $func1))
+  (export "i64.no_fold_div_s_mul" (func $func2))
+  (export "i64.no_fold_div_u_mul" (func $func3))
   (func $func0 (param $var0 i32) (result i32)
     get_local $var0
     i32.const 6

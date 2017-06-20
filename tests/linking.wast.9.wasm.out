@@ -1,9 +1,9 @@
 (module
   (type $type0 (func (result i32)))
   (type $type1 (func (param i32) (result i32)))
-  (import $import0 "Mt" "h" (func (result i32)))
+  (import "Mt" "h" (func $import0 (result i32)))
   (import $table0 "Mt" "tab" (table 5 anyfunc))
-  (export "call" $func2)
+  (export "call" (func $func2))
   (elem  (i32.const 1) $func1 $import0)
   (func $func1 (result i32)
     i32.const 6

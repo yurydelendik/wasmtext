@@ -1,6 +1,6 @@
 (module
   (type $type0 (func (result f64)))
-  (export "calculate" $func0)
+  (export "calculate" (func $func0))
   (func $func0 (result f64)
     (local $var0 f64) (local $var1 f64) (local $var2 f64) (local $var3 f64) (local $var4 f64)
     f64.const 0x1.3880000000000p7

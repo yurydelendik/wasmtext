@@ -1,9 +1,9 @@
 (module
   (type $type0 (func (param i32) (result i32)))
-  (import $import0 "Mm" "load" (func (param i32) (result i32)))
+  (import "Mm" "load" (func $import0 (param i32) (result i32)))
   (memory 1)
-  (export "Mm.load" $import0)
-  (export "load" $func1)
+  (export "Mm.load" (func $import0))
+  (export "load" (func $func1))
   (func $func1 (param $var0 i32) (result i32)
     get_local $var0
     i32.load8_u

@@ -1,8 +1,8 @@
 (module
   (type $type0 (func (param f32) (result f32)))
   (type $type1 (func (param f64) (result f64)))
-  (export "f32.no_fold_recip_recip" $func0)
-  (export "f64.no_fold_recip_recip" $func1)
+  (export "f32.no_fold_recip_recip" (func $func0))
+  (export "f64.no_fold_recip_recip" (func $func1))
   (func $func0 (param $var0 f32) (result f32)
     f32.const 0x1.000000p0
     f32.const 0x1.000000p0

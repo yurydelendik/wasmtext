@@ -3,12 +3,12 @@
   (type $type1 (func))
   (type $type2 (func (param i32) (result i32)))
   (memory 0)
-  (export "load_at_zero" $func0)
-  (export "store_at_zero" $func1)
-  (export "load_at_page_size" $func2)
-  (export "store_at_page_size" $func3)
-  (export "grow" $func4)
-  (export "size" $func5)
+  (export "load_at_zero" (func $func0))
+  (export "store_at_zero" (func $func1))
+  (export "load_at_page_size" (func $func2))
+  (export "store_at_page_size" (func $func3))
+  (export "grow" (func $func4))
+  (export "size" (func $func5))
   (func $func0 (result i32)
     i32.const 0
     i32.load

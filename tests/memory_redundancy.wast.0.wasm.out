@@ -4,12 +4,12 @@
   (type $type2 (func (result f32)))
   (type $type3 (func (param i32) (result i32)))
   (memory 1 1)
-  (export "zero_everything" $func0)
-  (export "test_store_to_load" $func1)
-  (export "test_redundant_load" $func2)
-  (export "test_dead_store" $func3)
-  (export "malloc" $func4)
-  (export "malloc_aliasing" $func5)
+  (export "zero_everything" (func $func0))
+  (export "test_store_to_load" (func $func1))
+  (export "test_redundant_load" (func $func2))
+  (export "test_dead_store" (func $func3))
+  (export "malloc" (func $func4))
+  (export "malloc_aliasing" (func $func5))
   (func $func0
     i32.const 0
     i32.const 0

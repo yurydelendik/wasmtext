@@ -6,11 +6,11 @@
   (type $type4 (func (result i32)))
   (type $type5 (func (param i32) (result i32)))
   (type $type6 (func (param i32)))
-  (import $import0 "spectest" "print" (func (param i32)))
-  (export "one" $func3)
-  (export "two" $func4)
-  (export "three" $func5)
-  (export "four" $func6)
+  (import "spectest" "print" (func $import0 (param i32)))
+  (export "one" (func $func3))
+  (export "two" (func $func4))
+  (export "three" (func $func5))
+  (export "four" (func $func6))
   (func $func1
   )
   (func $func2

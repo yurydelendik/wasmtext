@@ -1,6 +1,6 @@
 (module
   (type $type0 (func))
-  (import $import0 "spectest" "print" (func))
+  (import "spectest" "print" (func $import0))
   (import "Mm" "mem" (memory 1))
   (import $table0 "Mm" "tab" (table 0 anyfunc))
   (data (i32.const 0)

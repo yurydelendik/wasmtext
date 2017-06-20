@@ -1,8 +1,8 @@
 (module
   (type $type0 (func))
-  (export "br" $func0)
-  (export "br_if" $func1)
-  (export "br_table" $func2)
+  (export "br" (func $func0))
+  (export "br_if" (func $func1))
+  (export "br_table" (func $func2))
   (func $func0
     block $label0
       br $label0

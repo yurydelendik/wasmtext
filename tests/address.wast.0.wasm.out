@@ -1,9 +1,9 @@
 (module
   (type $type0 (func (param i32)))
-  (import $import0 "spectest" "print" (func (param i32)))
+  (import "spectest" "print" (func $import0 (param i32)))
   (memory 1)
-  (export "good" $func1)
-  (export "bad" $func2)
+  (export "good" (func $func1))
+  (export "bad" (func $func2))
   (func $func1 (param $var0 i32)
     get_local $var0
     i32.load8_u

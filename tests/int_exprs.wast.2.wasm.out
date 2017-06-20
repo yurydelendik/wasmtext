@@ -1,6 +1,6 @@
 (module
   (type $type0 (func (param i64) (result i64)))
-  (export "i64.no_fold_wrap_extend_u" $func0)
+  (export "i64.no_fold_wrap_extend_u" (func $func0))
   (func $func0 (param $var0 i64) (result i64)
     get_local $var0
     i32.wrap/i64

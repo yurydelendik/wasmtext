@@ -1,4 +1,4 @@
 (module
   (type $type0 (func))
-  (import $import0 "test" "table-10-inf" (func))
+  (import "test" "table-10-inf" (func $import0))
 )

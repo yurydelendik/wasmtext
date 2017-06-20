@@ -2,9 +2,9 @@
   (type $type0 (func (param f64 f64 f64 f64) (result f64)))
   (type $type1 (func (param f64 f64 f64) (result f64)))
   (type $type2 (func (param f32 f32 f32) (result f32)))
-  (export "thepast0" $func0)
-  (export "thepast1" $func1)
-  (export "thepast2" $func2)
+  (export "thepast0" (func $func0))
+  (export "thepast1" (func $func1))
+  (export "thepast2" (func $func2))
   (func $func0 (param $var0 f64) (param $var1 f64) (param $var2 f64) (param $var3 f64) (result f64)
     get_local $var0
     get_local $var1

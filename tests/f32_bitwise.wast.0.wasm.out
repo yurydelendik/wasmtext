@@ -1,9 +1,9 @@
 (module
   (type $type0 (func (param f32) (result f32)))
   (type $type1 (func (param f32 f32) (result f32)))
-  (export "abs" $func0)
-  (export "neg" $func1)
-  (export "copysign" $func2)
+  (export "abs" (func $func0))
+  (export "neg" (func $func1))
+  (export "copysign" (func $func2))
   (func $func0 (param $var0 f32) (result f32)
     get_local $var0
     f32.abs

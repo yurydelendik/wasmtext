@@ -1,4 +1,4 @@
 (module
   (type $type0 (func))
-  (import $import0 "test" "unknown" (func))
+  (import "test" "unknown" (func $import0))
 )
