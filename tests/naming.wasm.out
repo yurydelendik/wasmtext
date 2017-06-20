@@ -13,7 +13,7 @@
   (import $global6 (global i32))
   (import $global7 (global f64))
   (import $global8 (global f64))
-  (import "env" "memory" (memory 256 256))
+  (import "env" "memory" (memory (;0;) 256 256))
   (import $table0 "env" "table" (table 0 0 anyfunc))
   (import $global9 (global i32))
   (import $global10 (global i32))

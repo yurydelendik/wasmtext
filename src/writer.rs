@@ -711,7 +711,7 @@ impl<'a> Writer<'a> {
                         self.w().write_fmt(format_args!("(table {})", index))?;
                     }
                     ExternalKind::Memory => {
-                        self.write_bytes(b"memory")?;
+                        self.write_bytes(b"(memory 0)")?;
                     }
                     ExternalKind::Global => {
                         self.write_bytes(b"(global ")?;
@@ -753,7 +753,7 @@ impl<'a> Writer<'a> {
                     }
                     ImportSectionEntryType::Memory(ref memory_type) => {
                         self.write_import_source(module, field)?;
-                        self.write_bytes(b" (memory ")?;
+                        self.write_bytes(b" (memory (;0;) ")?;
                         self.write_limits(&memory_type.limits)?;
                         self.write_bytes(b")")?;
                     }
@@ -789,7 +789,7 @@ impl<'a> Writer<'a> {
 
             }
             ParserState::MemorySectionEntry(MemoryType { ref limits }) => {
-                self.write_bytes(b"  (memory ")?;
+                self.write_bytes(b"  (memory (;0;) ")?;
                 self.write_limits(limits)?;
                 self.write_bytes(b")\n")?;
             }

@@ -1,6 +1,6 @@
 (module
   (import $global0 (global i32))
-  (memory 1)
+  (memory (;0;) 1)
   (data (get_global $global0)
     "a"
   )
