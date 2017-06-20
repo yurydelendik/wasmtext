@@ -227,7 +227,7 @@
     i64.load32_u
   )
   (data (i32.const 0)
-    "ABC§\a7D"
+    "ABC\a7D"
   )
   (data (i32.const 20)
     "WASM"

@@ -118,27 +118,16 @@ fn format_float(bits: u64, w: u8, t: u8) -> Vec<u8> {
                                        .as_bytes());
         }
     } else if e_bits == max_e_bits {
-        // Always print a `+` or `-` sign for these special values.
-        // This makes them easier to parse as they can't be confused as identifiers.
-        if sign_bit == 0 {
-            result.push(b'+');
-        }
         if t_bits == 0 {
             // Infinity.
-            result.extend_from_slice(b"Inf");
+            result.extend_from_slice(b"inf");
         } else {
             // NaN.
             let payload = t_bits & ((1 << (t - 1)) - 1);
-            if t_bits & (1 << (t - 1)) != 0 {
-                // Quiet NaN.
-                if payload != 0 {
-                    result.extend_from_slice(format!("NaN:0x{:x}", payload).as_bytes());
-                } else {
-                    result.extend_from_slice(b"NaN")
-                }
+            if payload != 0 {
+                result.extend_from_slice(format!("nan:0x{:x}", payload).as_bytes());
             } else {
-                // Signaling NaN.
-                result.extend_from_slice(format!("sNaN:0x{:x}", payload).as_bytes());
+                result.extend_from_slice(b"nan")
             }
         }
     } else {
@@ -199,14 +188,14 @@ impl<'a> Writer<'a> {
         let mut j = 0;
         while i < bytes.len() {
             let byte = bytes[i];
-            i += 1;
             if byte < 0x20 || byte >= 0x7F || byte == b'\"' || byte == b'\\' {
                 if j < i {
                     self.write_bytes(&bytes[j..i])?;
-                    j = i;
                 }
                 self.w().write_fmt(format_args!("\\{:02x}", byte))?;
+                j = i + 1;
             }
+            i += 1;
         }
         if j < bytes.len() {
             self.write_bytes(&bytes[j..])?;

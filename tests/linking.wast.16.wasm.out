@@ -9,6 +9,6 @@
     i32.load8_u
   )
   (data (i32.const 10)
-    "ð\f0ñ\f1ò\f2ó\f3ô\f4õ\f5"
+    "\f0\f1\f2\f3\f4\f5"
   )
 )
