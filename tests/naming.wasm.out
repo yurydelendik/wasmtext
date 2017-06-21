@@ -14,7 +14,7 @@
   (import "global" "NaN" (global $global7 f64))
   (import "global" "Infinity" (global $global8 f64))
   (import "env" "memory""env" "memory" (memory (;0;) 256 256))
-  (import "env" "table" (table (;0;) 0 0 anyfunc))
+  (import "env" "table" (table $table0 0 0 anyfunc))
   (import "env" "memoryBase" (global $global9 i32))
   (import "env" "tableBase" (global $global10 i32))
   (global $global11 (mut i32) (get_global $global0))

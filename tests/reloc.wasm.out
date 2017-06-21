@@ -3,7 +3,7 @@
   (type $type1 (func (param i32) (result i32)))
   (type $type2 (func (result i32)))
   (import "env" "STACKTOP" (global $global0 i32))
-  (table (;0;) 0 anyfunc)
+  (table $table0 0 anyfunc)
   (memory (;0;) 4)
   (global $global1 (mut i32) (get_global $global0))
   (global $global2 i32 (i32.const 0))

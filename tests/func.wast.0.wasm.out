@@ -18,7 +18,7 @@
   (type $type16 (func (param f64 i64 f64 i64 f64 i64 f32 i32)))
   (type $type17 (func))
   (type $type18 (func (param f64 i64 f64 i64 f64 i64 f32 i32)))
-  (table (;0;) 5 5 anyfunc)
+  (table $table0 5 5 anyfunc)
   (export "f" (func $func2))
   (export "g" (func $func4))
   (export "local-first-i32" (func $func23))
