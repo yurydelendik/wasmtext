@@ -15,7 +15,7 @@
   (import "spectest" "print" (func $import6 (param i32)))
   (import "spectest" "print" (func $import7 (param f64)))
   (import "test" "func-i64->i64" (func $import8 (param i64) (result i64)))
-  (table 2 2 anyfunc)
+  (table (;0;) 2 2 anyfunc)
   (export "print32" (func $func9))
   (export "print64" (func $func10))
   (elem  (i32.const 0) $import1 $import3)

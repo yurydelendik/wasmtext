@@ -1,5 +1,5 @@
 (module
-  (import $global0 (global i32))
+  (import "spectest" "global" (global $global0 i32))
   (memory (;0;) 1)
   (data (get_global $global0)
     "a"

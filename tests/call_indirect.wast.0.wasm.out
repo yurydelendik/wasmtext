@@ -17,7 +17,7 @@
   (type $type15 (func (param f32) (result f32)))
   (type $type16 (func (param f64) (result f64)))
   (type $type17 (func (param i32) (result i64)))
-  (table 23 23 anyfunc)
+  (table (;0;) 23 23 anyfunc)
   (export "type-i32" (func $func16))
   (export "type-i64" (func $func17))
   (export "type-f32" (func $func18))

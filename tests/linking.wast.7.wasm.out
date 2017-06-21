@@ -2,7 +2,7 @@
   (type $type0 (func (result i32)))
   (type $type1 (func))
   (type $type2 (func (param i32) (result i32)))
-  (table 10 anyfunc)
+  (table (;0;) 10 anyfunc)
   (export "tab" (table 0))
   (export "h" (func $func1))
   (export "call" (func $func2))

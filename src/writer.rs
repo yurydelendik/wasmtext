@@ -53,7 +53,7 @@ fn get_global_name(index: u32, _is_ref: bool) -> Vec<u8> {
     format_to_vec!("$global{}", index)
 }
 
-fn get_table_name(index: u32, _is_ref: bool) -> Vec<u8> {
+fn _get_table_name(index: u32, _is_ref: bool) -> Vec<u8> {
     format_to_vec!("$table{}", index)
 }
 
@@ -708,7 +708,7 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ExternalKind::Table => {
-                        self.w().write_fmt(format_args!("(table {})", index))?;
+                        self.write_bytes(b"(table 0)")?;
                     }
                     ExternalKind::Memory => {
                         self.write_bytes(b"(memory 0)")?;
@@ -728,13 +728,13 @@ impl<'a> Writer<'a> {
                 ..
             } => {
                 self.write_bytes(b"  (import ")?;
+                self.write_import_source(module, field)?;
                 match *ty {
                     ImportSectionEntryType::Function(type_index) => {
                         self.func_types.push(type_index);
                         let index = self.func_index as u32;
                         self.func_index += 1;
                         self.import_count += 1;
-                        self.write_import_source(module, field)?;
                         self.write_bytes(b" (func ")?;
                         self.write_bytes(&get_func_name(index, true, false))?;
                         let ty = self.types[type_index as usize].clone();
@@ -742,10 +742,7 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ImportSectionEntryType::Table(ref table_type) => {
-                        self.write_bytes(&get_table_name(0, false))?;
-                        self.write_bytes(b" ")?;
-                        self.write_import_source(module, field)?;
-                        self.write_bytes(b" (table ")?;
+                        self.write_bytes(b" (table (;0;) ")?;
                         self.write_limits(&table_type.limits)?;
                         self.write_bytes(b" ")?;
                         self.write_type(table_type.element_type)?;
@@ -760,8 +757,9 @@ impl<'a> Writer<'a> {
                     ImportSectionEntryType::Global(ref global_type) => {
                         let index = self.global_count as u32;
                         self.global_count += 1;
-                        self.write_bytes(&get_global_name(index, false))?;
                         self.write_bytes(b" (global ")?;
+                        self.write_bytes(&get_global_name(index, false))?;
+                        self.write_bytes(b" ")?;
                         self.write_global_type(global_type)?;
                         self.write_bytes(b")")?;
                     }
@@ -781,7 +779,7 @@ impl<'a> Writer<'a> {
                                                element_type,
                                                ref limits,
                                            }) => {
-                self.write_bytes(b"  (table ")?;
+                self.write_bytes(b"  (table (;0;) ")?;
                 self.write_limits(limits)?;
                 self.write_bytes(b" ")?;
                 self.write_type(element_type)?;
