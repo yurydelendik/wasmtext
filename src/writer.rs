@@ -57,6 +57,14 @@ fn get_table_name(index: u32, _is_ref: bool) -> Vec<u8> {
     format_to_vec!("$table{}", index)
 }
 
+fn get_memory_name(index: u32, is_ref: bool) -> Vec<u8> {
+    if is_ref {
+        format_to_vec!("{}", index)
+    } else {
+        format_to_vec!("(;{};)", index)
+    }
+}
+
 fn get_type_name(index: u32, _is_ref: bool) -> Vec<u8> {
     format_to_vec!("$type{}", index)
 }
@@ -151,6 +159,8 @@ pub struct Writer<'a> {
     func_index: usize,
     import_count: usize,
     global_count: usize,
+    table_count: usize,
+    memory_count: usize,
     indent: u32,
     label_index: usize,
     backref_labels: Vec<BackrefLabel>,
@@ -165,6 +175,8 @@ impl<'a> Writer<'a> {
             func_index: 0,
             import_count: 0,
             global_count: 0,
+            table_count: 0,
+            memory_count: 0,
             indent: 0,
             label_index: 0,
             backref_labels: Vec::new(),
@@ -713,7 +725,9 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ExternalKind::Memory => {
-                        self.write_bytes(b"(memory 0)")?;
+                        self.write_bytes(b"(memory ")?;
+                        self.write_bytes(&get_memory_name(index, true))?;
+                        self.write_bytes(b")")?;
                     }
                     ExternalKind::Global => {
                         self.write_bytes(b"(global ")?;
@@ -745,7 +759,9 @@ impl<'a> Writer<'a> {
                     }
                     ImportSectionEntryType::Table(ref table_type) => {
                         self.write_bytes(b" (table ")?;
-                        self.write_bytes(&get_table_name(0, false))?;
+                        let index = self.table_count as u32;
+                        self.table_count += 1;
+                        self.write_bytes(&get_table_name(index, false))?;
                         self.write_bytes(b" ")?;
                         self.write_limits(&table_type.limits)?;
                         self.write_bytes(b" ")?;
@@ -753,7 +769,11 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ImportSectionEntryType::Memory(ref memory_type) => {
-                        self.write_bytes(b" (memory (;0;) ")?;
+                        let index = self.memory_count as u32;
+                        self.memory_count += 1;
+                        self.write_bytes(b" (memory ")?;
+                        self.write_bytes(&get_memory_name(index, false))?;
+                        self.write_bytes(b" ")?;
                         self.write_limits(&memory_type.limits)?;
                         self.write_bytes(b")")?;
                     }
@@ -782,8 +802,10 @@ impl<'a> Writer<'a> {
                                                element_type,
                                                ref limits,
                                            }) => {
+                let index = self.table_count as u32;
+                self.table_count += 1;
                 self.write_bytes(b"  (table ")?;
-                self.write_bytes(&get_table_name(0, false))?;
+                self.write_bytes(&get_table_name(index, false))?;
                 self.write_bytes(b" ")?;
                 self.write_limits(limits)?;
                 self.write_bytes(b" ")?;
@@ -792,7 +814,11 @@ impl<'a> Writer<'a> {
 
             }
             ParserState::MemorySectionEntry(MemoryType { ref limits }) => {
-                self.write_bytes(b"  (memory (;0;) ")?;
+                let index = self.memory_count as u32;
+                self.memory_count += 1;
+                self.write_bytes(b"  (memory ")?;
+                self.write_bytes(&get_memory_name(index, false))?;
+                self.write_bytes(b" ")?;
                 self.write_limits(limits)?;
                 self.write_bytes(b")\n")?;
             }
