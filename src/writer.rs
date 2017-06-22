@@ -753,7 +753,6 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ImportSectionEntryType::Memory(ref memory_type) => {
-                        self.write_import_source(module, field)?;
                         self.write_bytes(b" (memory (;0;) ")?;
                         self.write_limits(&memory_type.limits)?;
                         self.write_bytes(b")")?;
