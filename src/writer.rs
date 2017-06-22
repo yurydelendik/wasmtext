@@ -123,9 +123,9 @@ fn format_float(bits: u64, w: u8, t: u8) -> Vec<u8> {
             result.extend_from_slice(b"inf");
         } else {
             // NaN.
-            let payload = t_bits & ((1 << (t - 1)) - 1);
-            if payload != 0 {
-                result.extend_from_slice(format!("nan:0x{:x}", payload).as_bytes());
+            let default_payload = 1 << (t - 1);
+            if t_bits != default_payload {
+                result.extend_from_slice(format!("nan:0x{:x}", t_bits).as_bytes());
             } else {
                 result.extend_from_slice(b"nan")
             }
