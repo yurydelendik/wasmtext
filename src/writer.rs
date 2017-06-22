@@ -833,9 +833,7 @@ impl<'a> Writer<'a> {
                 if locals.len() > 0 {
                     self.write_bytes(b"   ")?;
                     let mut local_index = func_type.params.len();
-                    for i in 0..locals.len() {
-                        let j = locals[i].0;
-                        let ty = locals[i].1;
+                    for &(j, ty) in locals {
                         for _ in 0..j {
                             self.write_bytes(b" (local ")?;
                             self.write_bytes(&get_var_name(index, local_index as u32, false))?;
