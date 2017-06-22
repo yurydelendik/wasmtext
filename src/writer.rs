@@ -90,7 +90,7 @@ fn format_float(bits: u64, w: u8, t: u8) -> Vec<u8> {
     let max_e_bits = (1u64 << w) - 1;
     let t_bits = bits & ((1u64 << t) - 1); // Trailing significand.
     let e_bits = (bits >> t) & max_e_bits; // Biased exponent.
-    let sign_bit = (bits >> w + t) & 1;
+    let sign_bit = (bits >> (w + t)) & 1;
 
     let bias: i32 = (1 << (w - 1)) - 1;
     let e = e_bits as i32 - bias; // Unbiased exponent.
@@ -123,9 +123,9 @@ fn format_float(bits: u64, w: u8, t: u8) -> Vec<u8> {
             result.extend_from_slice(b"inf");
         } else {
             // NaN.
-            let payload = t_bits & ((1 << (t - 1)) - 1);
-            if payload != 0 {
-                result.extend_from_slice(format!("nan:0x{:x}", payload).as_bytes());
+            let default_payload = 1 << (t - 1);
+            if t_bits != default_payload {
+                result.extend_from_slice(format!("nan:0x{:x}", t_bits).as_bytes());
             } else {
                 result.extend_from_slice(b"nan")
             }
@@ -753,7 +753,6 @@ impl<'a> Writer<'a> {
                         self.write_bytes(b")")?;
                     }
                     ImportSectionEntryType::Memory(ref memory_type) => {
-                        self.write_import_source(module, field)?;
                         self.write_bytes(b" (memory (;0;) ")?;
                         self.write_limits(&memory_type.limits)?;
                         self.write_bytes(b")")?;
@@ -834,9 +833,7 @@ impl<'a> Writer<'a> {
                 if locals.len() > 0 {
                     self.write_bytes(b"   ")?;
                     let mut local_index = func_type.params.len();
-                    for i in 0..locals.len() {
-                        let j = locals[i].0;
-                        let ty = locals[i].1;
+                    for &(j, ty) in locals {
                         for _ in 0..j {
                             self.write_bytes(b" (local ")?;
                             self.write_bytes(&get_var_name(index, local_index as u32, false))?;
@@ -896,7 +893,7 @@ impl<'a> Writer<'a> {
             ParserState::StartSectionEntry(index) => {
                 self.write_bytes(b"  (start ")?;
                 self.write_func_name_ref(index)?;
-                self.write_bytes(b"  )\n")?;
+                self.write_bytes(b")\n")?;
             }
             ParserState::BeginElementSectionEntry(_) => {
                 self.write_bytes(b"  (elem ")?;

@@ -4,7 +4,7 @@
   (memory (;0;) 1 1)
   (export "inc" (func $func0))
   (export "get" (func $func1))
-  (start $func2  )
+  (start $func2)
   (func $func0
     i32.const 0
     i32.const 0

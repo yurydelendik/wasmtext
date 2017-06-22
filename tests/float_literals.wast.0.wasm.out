@@ -82,7 +82,7 @@
     i32.reinterpret/f32
   )
   (func $func5 (result i32)
-    f32.const -nan:0x3fffff
+    f32.const -nan:0x7fffff
     i32.reinterpret/f32
   )
   (func $func6 (result i32)
@@ -202,7 +202,7 @@
     i64.reinterpret/f64
   )
   (func $func35 (result i64)
-    f64.const -nan:0x7ffffffffffff
+    f64.const -nan:0xfffffffffffff
     i64.reinterpret/f64
   )
   (func $func36 (result i64)
