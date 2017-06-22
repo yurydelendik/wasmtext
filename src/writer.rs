@@ -895,7 +895,7 @@ impl<'a> Writer<'a> {
             ParserState::StartSectionEntry(index) => {
                 self.write_bytes(b"  (start ")?;
                 self.write_func_name_ref(index)?;
-                self.write_bytes(b"  )\n")?;
+                self.write_bytes(b")\n")?;
             }
             ParserState::BeginElementSectionEntry(_) => {
                 self.write_bytes(b"  (elem ")?;
