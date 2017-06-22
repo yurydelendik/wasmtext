@@ -90,7 +90,7 @@ fn format_float(bits: u64, w: u8, t: u8) -> Vec<u8> {
     let max_e_bits = (1u64 << w) - 1;
     let t_bits = bits & ((1u64 << t) - 1); // Trailing significand.
     let e_bits = (bits >> t) & max_e_bits; // Biased exponent.
-    let sign_bit = (bits >> w + t) & 1;
+    let sign_bit = (bits >> (w + t)) & 1;
 
     let bias: i32 = (1 << (w - 1)) - 1;
     let e = e_bits as i32 - bias; // Unbiased exponent.
