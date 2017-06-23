@@ -922,7 +922,7 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b")\n")?;
             }
             ParserState::BeginElementSectionEntry(_) => {
-                self.write_bytes(b"  (elem ")?;
+                self.write_bytes(b"  (elem")?;
             }
             ParserState::EndElementSectionEntry => {
                 self.write_bytes(b")\n")?;

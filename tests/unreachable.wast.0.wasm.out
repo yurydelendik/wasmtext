@@ -64,7 +64,7 @@
   (export "as-compare-right" (func $func54))
   (export "as-convert-operand" (func $func55))
   (export "as-grow_memory-size" (func $func56))
-  (elem  (i32.const 0) $func1)
+  (elem (i32.const 0) $func1)
   (func $func0
   )
   (func $func1 (param $var0 i32) (param $var1 i32) (param $var2 i32)

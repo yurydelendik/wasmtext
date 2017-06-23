@@ -18,7 +18,7 @@
   (table $table0 2 2 anyfunc)
   (export "print32" (func $func9))
   (export "print64" (func $func10))
-  (elem  (i32.const 0) $import1 $import3)
+  (elem (i32.const 0) $import1 $import3)
   (func $func9 (param $var0 i32)
     (local $var1 f32)
     get_local $var0

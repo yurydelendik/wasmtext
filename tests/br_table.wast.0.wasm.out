@@ -75,7 +75,7 @@
   (export "nested-br_table-value" (func $func64))
   (export "nested-br_table-value-index" (func $func65))
   (export "nested-br_table-loop-block" (func $func66))
-  (elem  (i32.const 0) $func37)
+  (elem (i32.const 0) $func37)
   (func $func0
   )
   (func $func1

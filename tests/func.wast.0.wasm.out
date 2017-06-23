@@ -73,7 +73,7 @@
   (export "signature-implicit-reused" (func $func77))
   (export "signature-explicit-duplicate" (func $func78))
   (export "signature-implicit-duplicate" (func $func79))
-  (elem  (i32.const 0) $func75 $func73 $func72 $func75 $func71)
+  (elem (i32.const 0) $func75 $func73 $func72 $func75 $func71)
   (func $func0
   )
   (func $func1
