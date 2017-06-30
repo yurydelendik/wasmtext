@@ -9,6 +9,7 @@ mod tests {
     use std::io::prelude::*;
     use std::fs::{File, read_dir};
     use std::path::PathBuf;
+    use wasmparser::WasmDecoder;
     use wasmparser::Parser;
     use wasmparser::ParserState;
     use writer::Writer;
@@ -36,7 +37,7 @@ mod tests {
                 loop {
                     let state = parser.read();
                     if let ParserState::Error(msg) = *state {
-                        panic!("Error: {}", msg);
+                        panic!("Error: {:?}", msg);
                     }
                     writer.write(state).unwrap();
                     if let ParserState::EndWasm = *state {
