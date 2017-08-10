@@ -1,0 +1,7 @@
+(module
+  (type $type0 (func))
+  (func $func0
+    f64.const -0x1.0000000000000p1023
+    drop
+  )
+)

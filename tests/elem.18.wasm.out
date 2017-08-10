@@ -1,0 +1,12 @@
+(module
+  (type $type0 (func (result i32)))
+  (import "module-1" "shared-table" (table $table0 10 anyfunc))
+  (elem (i32.const 8) $func0)
+  (elem (i32.const 9) $func1)
+  (func $func0 (result i32)
+    i32.const 69
+  )
+  (func $func1 (result i32)
+    i32.const 70
+  )
+)

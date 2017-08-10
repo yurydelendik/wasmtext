@@ -1,0 +1,21 @@
+(module
+  (type $type0 (func (param i32)))
+  (type $type1 (func (result f64)))
+  (type $type2 (func))
+  (func $func0 (result f64)
+    f64.const 0.0
+  )
+  (func $func1 (param $var0 i32)
+  )
+  (func $func2 (param $var0 i32)
+  )
+  (func $func3 (result f64)
+    f64.const 0.0
+  )
+  (func $func4
+    i32.const 0
+    call $func2
+    call $func3
+    drop
+  )
+)

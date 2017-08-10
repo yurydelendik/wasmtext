@@ -1,0 +1,389 @@
+(module
+  (type $type0 (func))
+  (type $type1 (func))
+  (type $type2 (func (result i32)))
+  (type $type3 (func (param i32)))
+  (type $type4 (func (param i32 f64 i32) (result i32)))
+  (type $type5 (func))
+  (type $type6 (func (param i32 f64 i64)))
+  (type $type7 (func (param i32 f64)))
+  (type $type8 (func (param i32 f32 i64 i32 f64)))
+  (type $type9 (func (param i32 f32 i64 i32) (result i32)))
+  (type $type10 (func (result i64)))
+  (type $type11 (func (result f32)))
+  (type $type12 (func (result f64)))
+  (type $type13 (func (param i32 i32) (result i32)))
+  (type $type14 (func (param i64 i64) (result i64)))
+  (type $type15 (func (param f32 f32) (result f32)))
+  (type $type16 (func (param f64 f64) (result f64)))
+  (type $type17 (func (param f32 i32 i64 i32 f64 i32) (result f64)))
+  (type $type18 (func (param i32) (result i32)))
+  (export "f" (func $func2))
+  (export "g" (func $func4))
+  (export "type-use-1" (func $func20))
+  (export "type-use-2" (func $func21))
+  (export "type-use-3" (func $func22))
+  (export "type-use-4" (func $func23))
+  (export "type-use-5" (func $func24))
+  (export "type-use-6" (func $func25))
+  (export "type-use-7" (func $func26))
+  (export "local-first-i32" (func $func31))
+  (export "local-first-i64" (func $func32))
+  (export "local-first-f32" (func $func33))
+  (export "local-first-f64" (func $func34))
+  (export "local-second-i32" (func $func35))
+  (export "local-second-i64" (func $func36))
+  (export "local-second-f32" (func $func37))
+  (export "local-second-f64" (func $func38))
+  (export "local-mixed" (func $func39))
+  (export "param-first-i32" (func $func40))
+  (export "param-first-i64" (func $func41))
+  (export "param-first-f32" (func $func42))
+  (export "param-first-f64" (func $func43))
+  (export "param-second-i32" (func $func44))
+  (export "param-second-i64" (func $func45))
+  (export "param-second-f32" (func $func46))
+  (export "param-second-f64" (func $func47))
+  (export "param-mixed" (func $func48))
+  (export "empty" (func $func49))
+  (export "value-void" (func $func50))
+  (export "value-i32" (func $func51))
+  (export "value-i64" (func $func52))
+  (export "value-f32" (func $func53))
+  (export "value-f64" (func $func54))
+  (export "value-block-void" (func $func55))
+  (export "value-block-i32" (func $func56))
+  (export "return-empty" (func $func57))
+  (export "return-i32" (func $func58))
+  (export "return-i64" (func $func59))
+  (export "return-f32" (func $func60))
+  (export "return-f64" (func $func61))
+  (export "return-block-i32" (func $func62))
+  (export "break-empty" (func $func63))
+  (export "break-i32" (func $func64))
+  (export "break-i64" (func $func65))
+  (export "break-f32" (func $func66))
+  (export "break-f64" (func $func67))
+  (export "break-block-i32" (func $func68))
+  (export "break-br_if-empty" (func $func69))
+  (export "break-br_if-num" (func $func70))
+  (export "break-br_table-empty" (func $func71))
+  (export "break-br_table-num" (func $func72))
+  (export "break-br_table-nested-empty" (func $func73))
+  (export "break-br_table-nested-num" (func $func74))
+  (export "init-local-i32" (func $func75))
+  (export "init-local-i64" (func $func76))
+  (export "init-local-f32" (func $func77))
+  (export "init-local-f64" (func $func78))
+  (func $func0
+  )
+  (func $func1
+  )
+  (func $func2
+  )
+  (func $func3
+  )
+  (func $func4
+  )
+  (func $func5
+  )
+  (func $func6
+  )
+  (func $func7
+    (local $var0 i32)
+  )
+  (func $func8
+    (local $var0 i32)
+  )
+  (func $func9
+    (local $var0 i32) (local $var1 f64) (local $var2 i64)
+  )
+  (func $func10
+    (local $var0 i32) (local $var1 f64)
+  )
+  (func $func11
+    (local $var0 i32) (local $var1 f32) (local $var2 i64) (local $var3 i32) (local $var4 f64)
+  )
+  (func $func12
+  )
+  (func $func13
+  )
+  (func $func14 (param $var0 i32)
+  )
+  (func $func15 (param $var0 i32)
+  )
+  (func $func16 (param $var0 i32) (param $var1 f64) (param $var2 i64)
+  )
+  (func $func17 (param $var0 i32) (param $var1 f64)
+  )
+  (func $func18 (param $var0 i32) (param $var1 f32) (param $var2 i64) (param $var3 i32) (param $var4 f64)
+  )
+  (func $func19 (result i32)
+    unreachable
+  )
+  (func $func20
+  )
+  (func $func21 (result i32)
+    i32.const 0
+  )
+  (func $func22 (param $var0 i32)
+  )
+  (func $func23 (param $var0 i32) (param $var1 f64) (param $var2 i32) (result i32)
+    i32.const 0
+  )
+  (func $func24 (result i32)
+    i32.const 0
+  )
+  (func $func25 (param $var0 i32)
+  )
+  (func $func26 (param $var0 i32) (param $var1 f64) (param $var2 i32) (result i32)
+    i32.const 0
+  )
+  (func $func27
+  )
+  (func $func28
+  )
+  (func $func29 (param $var0 i32) (param $var1 f32) (param $var2 i64) (param $var3 i32) (result i32)
+    (local $var4 f32) (local $var5 i32) (local $var6 i64) (local $var7 i32) (local $var8 f64) (local $var9 i32)
+    unreachable
+    unreachable
+  )
+  (func $func30
+    (local $var0 f32) (local $var1 i32) (local $var2 i64) (local $var3 i32) (local $var4 f64) (local $var5 i32)
+    unreachable
+    unreachable
+  )
+  (func $func31 (result i32)
+    (local $var0 i32) (local $var1 i32)
+    get_local $var0
+  )
+  (func $func32 (result i64)
+    (local $var0 i64) (local $var1 i64)
+    get_local $var0
+  )
+  (func $func33 (result f32)
+    (local $var0 f32) (local $var1 f32)
+    get_local $var0
+  )
+  (func $func34 (result f64)
+    (local $var0 f64) (local $var1 f64)
+    get_local $var0
+  )
+  (func $func35 (result i32)
+    (local $var0 i32) (local $var1 i32)
+    get_local $var1
+  )
+  (func $func36 (result i64)
+    (local $var0 i64) (local $var1 i64)
+    get_local $var1
+  )
+  (func $func37 (result f32)
+    (local $var0 f32) (local $var1 f32)
+    get_local $var1
+  )
+  (func $func38 (result f64)
+    (local $var0 f64) (local $var1 f64)
+    get_local $var1
+  )
+  (func $func39 (result f64)
+    (local $var0 f32) (local $var1 i32) (local $var2 i64) (local $var3 i32) (local $var4 f64) (local $var5 i32)
+    get_local $var0
+    f32.neg
+    drop
+    get_local $var1
+    i32.eqz
+    drop
+    get_local $var2
+    i64.eqz
+    drop
+    get_local $var3
+    i32.eqz
+    drop
+    get_local $var4
+    f64.neg
+    drop
+    get_local $var5
+    i32.eqz
+    drop
+    get_local $var4
+  )
+  (func $func40 (param $var0 i32) (param $var1 i32) (result i32)
+    get_local $var0
+  )
+  (func $func41 (param $var0 i64) (param $var1 i64) (result i64)
+    get_local $var0
+  )
+  (func $func42 (param $var0 f32) (param $var1 f32) (result f32)
+    get_local $var0
+  )
+  (func $func43 (param $var0 f64) (param $var1 f64) (result f64)
+    get_local $var0
+  )
+  (func $func44 (param $var0 i32) (param $var1 i32) (result i32)
+    get_local $var1
+  )
+  (func $func45 (param $var0 i64) (param $var1 i64) (result i64)
+    get_local $var1
+  )
+  (func $func46 (param $var0 f32) (param $var1 f32) (result f32)
+    get_local $var1
+  )
+  (func $func47 (param $var0 f64) (param $var1 f64) (result f64)
+    get_local $var1
+  )
+  (func $func48 (param $var0 f32) (param $var1 i32) (param $var2 i64) (param $var3 i32) (param $var4 f64) (param $var5 i32) (result f64)
+    get_local $var0
+    f32.neg
+    drop
+    get_local $var1
+    i32.eqz
+    drop
+    get_local $var2
+    i64.eqz
+    drop
+    get_local $var3
+    i32.eqz
+    drop
+    get_local $var4
+    f64.neg
+    drop
+    get_local $var5
+    i32.eqz
+    drop
+    get_local $var4
+  )
+  (func $func49
+  )
+  (func $func50
+    call $func0
+  )
+  (func $func51 (result i32)
+    i32.const 77
+  )
+  (func $func52 (result i64)
+    i64.const 7777
+  )
+  (func $func53 (result f32)
+    f32.const 0x1.36ccccp6
+  )
+  (func $func54 (result f64)
+    f64.const 0x1.37147ae147ae1p6
+  )
+  (func $func55
+    block
+      call $func0
+      call $func0
+    end
+  )
+  (func $func56 (result i32)
+    block (result i32)
+      call $func0
+      i32.const 77
+    end
+  )
+  (func $func57
+    return
+  )
+  (func $func58 (result i32)
+    i32.const 78
+    return
+  )
+  (func $func59 (result i64)
+    i64.const 7878
+    return
+  )
+  (func $func60 (result f32)
+    f32.const 0x1.3accccp6
+    return
+  )
+  (func $func61 (result f64)
+    f64.const 0x1.3b1eb851eb852p6
+    return
+  )
+  (func $func62 (result i32)
+    block (result i32)
+      call $func0
+      i32.const 77
+    end
+    return
+  )
+  (func $func63
+    br 0
+  )
+  (func $func64 (result i32)
+    i32.const 79
+    br 0
+  )
+  (func $func65 (result i64)
+    i64.const 7979
+    br 0
+  )
+  (func $func66 (result f32)
+    f32.const 0x1.3f999ap6
+    br 0
+  )
+  (func $func67 (result f64)
+    f64.const 0x1.3f28f5c28f5c3p6
+    br 0
+  )
+  (func $func68 (result i32)
+    block (result i32)
+      call $func0
+      i32.const 77
+    end
+    br 0
+  )
+  (func $func69 (param $var0 i32)
+    get_local $var0
+    br_if 0
+  )
+  (func $func70 (param $var0 i32) (result i32)
+    i32.const 50
+    get_local $var0
+    br_if 0
+    drop
+    i32.const 51
+  )
+  (func $func71 (param $var0 i32)
+    get_local $var0
+    br_table 0 0 0
+  )
+  (func $func72 (param $var0 i32) (result i32)
+    i32.const 50
+    get_local $var0
+    br_table 0 0
+    i32.const 51
+  )
+  (func $func73 (param $var0 i32)
+    block $label0
+      get_local $var0
+      br_table $label0 1 $label0
+    end $label0
+  )
+  (func $func74 (param $var0 i32) (result i32)
+    block $label0 (result i32)
+      i32.const 50
+      get_local $var0
+      br_table $label0 1 $label0
+      i32.const 51
+    end $label0
+    i32.const 2
+    i32.add
+  )
+  (func $func75 (result i32)
+    (local $var0 i32)
+    get_local $var0
+  )
+  (func $func76 (result i64)
+    (local $var0 i64)
+    get_local $var0
+  )
+  (func $func77 (result f32)
+    (local $var0 f32)
+    get_local $var0
+  )
+  (func $func78 (result f64)
+    (local $var0 f64)
+    get_local $var0
+  )
+)

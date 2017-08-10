@@ -1,0 +1,79 @@
+(module
+  (type $type0 (func (param i32) (result i32)))
+  (type $type1 (func (param i32)))
+  (memory (;0;) 1)
+  (export "good1" (func $func0))
+  (export "good2" (func $func1))
+  (export "good3" (func $func2))
+  (export "good4" (func $func3))
+  (export "good5" (func $func4))
+  (export "good6" (func $func5))
+  (export "good7" (func $func6))
+  (export "good8" (func $func7))
+  (export "good9" (func $func8))
+  (export "good10" (func $func9))
+  (export "good11" (func $func10))
+  (export "good12" (func $func11))
+  (export "good13" (func $func12))
+  (export "bad" (func $func13))
+  (func $func0 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load8_u
+  )
+  (func $func1 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load8_u offset=1
+  )
+  (func $func2 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load8_u offset=2
+  )
+  (func $func3 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load8_u offset=25
+  )
+  (func $func4 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load16_u
+  )
+  (func $func5 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load16_u align=1
+  )
+  (func $func6 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load16_u offset=1 align=1
+  )
+  (func $func7 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load16_u offset=2
+  )
+  (func $func8 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load16_u offset=25 align=1
+  )
+  (func $func9 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load
+  )
+  (func $func10 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load offset=1 align=1
+  )
+  (func $func11 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load offset=2 align=2
+  )
+  (func $func12 (param $var0 i32) (result i32)
+    get_local $var0
+    i32.load offset=25 align=1
+  )
+  (func $func13 (param $var0 i32)
+    get_local $var0
+    i32.load offset=4294967295
+    drop
+  )
+  (data (i32.const 0)
+    "abcdefghijklmnopqrstuvwxyz"
+  )
+)
