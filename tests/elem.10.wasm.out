@@ -1,0 +1,17 @@
+(module
+  (type $type0 (func (result i32)))
+  (import "spectest" "table" (table $table0 10 anyfunc))
+  (export "call-overwritten-element" (func $func2))
+  (elem (i32.const 9) $func0)
+  (elem (i32.const 9) $func1)
+  (func $func0 (result i32)
+    i32.const 65
+  )
+  (func $func1 (result i32)
+    i32.const 66
+  )
+  (func $func2 (result i32)
+    i32.const 9
+    call_indirect $type0
+  )
+)

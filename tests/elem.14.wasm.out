@@ -1,0 +1,7 @@
+(module
+  (type $type0 (func))
+  (import "spectest" "table" (table $table0 10 anyfunc))
+  (elem (i32.const -10) $func0)
+  (func $func0
+  )
+)

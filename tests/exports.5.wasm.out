@@ -1,0 +1,7 @@
+(module
+  (type $type0 (func (param i32)))
+  (export "b" (func $func0))
+  (export "a" (func $func0))
+  (func $func0 (param $var0 i32)
+  )
+)

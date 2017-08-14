@@ -1,0 +1,90 @@
+(module
+  (type $type0 (func))
+  (type $type1 (func))
+  (type $type2 (func (param i64 i64 f64 i64 f64 i64 f32 i32)))
+  (type $type3 (func (param f64 i64 f64 i64 f64 i64 f32 i32)))
+  (table $table0 7 7 anyfunc)
+  (export "signature-explicit-reused" (func $func7))
+  (export "signature-implicit-reused" (func $func8))
+  (export "signature-explicit-duplicate" (func $func9))
+  (export "signature-implicit-duplicate" (func $func10))
+  (elem (i32.const 0) $func4 $func2 $func1 $func4 $func0 $func5 $func6)
+  (func $func0
+  )
+  (func $func1 (param $var0 f64) (param $var1 i64) (param $var2 f64) (param $var3 i64) (param $var4 f64) (param $var5 i64) (param $var6 f32) (param $var7 i32)
+  )
+  (func $func2
+  )
+  (func $func3 (param $var0 f64) (param $var1 i64) (param $var2 f64) (param $var3 i64) (param $var4 f64) (param $var5 i64) (param $var6 f32) (param $var7 i32)
+  )
+  (func $func4 (param $var0 f64) (param $var1 i64) (param $var2 f64) (param $var3 i64) (param $var4 f64) (param $var5 i64) (param $var6 f32) (param $var7 i32)
+  )
+  (func $func5 (param $var0 i64) (param $var1 i64) (param $var2 f64) (param $var3 i64) (param $var4 f64) (param $var5 i64) (param $var6 f32) (param $var7 i32)
+  )
+  (func $func6 (param $var0 i64) (param $var1 i64) (param $var2 f64) (param $var3 i64) (param $var4 f64) (param $var5 i64) (param $var6 f32) (param $var7 i32)
+  )
+  (func $func7
+    i32.const 1
+    call_indirect $type0
+    i32.const 4
+    call_indirect $type0
+  )
+  (func $func8
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f32.const 0.0
+    i32.const 0
+    i32.const 0
+    call_indirect $type3
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f32.const 0.0
+    i32.const 0
+    i32.const 2
+    call_indirect $type3
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f32.const 0.0
+    i32.const 0
+    i32.const 3
+    call_indirect $type3
+  )
+  (func $func9
+    i32.const 1
+    call_indirect $type1
+  )
+  (func $func10
+    i64.const 0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f32.const 0.0
+    i32.const 0
+    i32.const 5
+    call_indirect $type2
+    i64.const 0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f64.const 0.0
+    i64.const 0
+    f32.const 0.0
+    i32.const 0
+    i32.const 6
+    call_indirect $type2
+  )
+)

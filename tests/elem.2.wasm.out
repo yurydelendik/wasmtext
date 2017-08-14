@@ -1,0 +1,22 @@
+(module
+  (type $type0 (func (result i32)))
+  (table $table0 10 anyfunc)
+  (export "call-7" (func $func2))
+  (export "call-9" (func $func3))
+  (elem (i32.const 7) $func0)
+  (elem (i32.const 9) $func1)
+  (func $func0 (result i32)
+    i32.const 65
+  )
+  (func $func1 (result i32)
+    i32.const 66
+  )
+  (func $func2 (result i32)
+    i32.const 7
+    call_indirect $type0
+  )
+  (func $func3 (result i32)
+    i32.const 9
+    call_indirect $type0
+  )
+)

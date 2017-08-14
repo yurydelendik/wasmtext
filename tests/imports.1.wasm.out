@@ -1,0 +1,77 @@
+(module
+  (type $type0 (func (param i32)))
+  (type $type1 (func (param i64)))
+  (type $type2 (func (param f32)))
+  (type $type3 (func (param f64)))
+  (type $type4 (func (param i32)))
+  (type $type5 (func (param i32 f32)))
+  (type $type6 (func (param f64 f64)))
+  (type $type7 (func (param i64) (result i64)))
+  (import "spectest" "print" (func $import0 (param i32)))
+  (import "spectest" "print" (func $import1 (param i32)))
+  (import "spectest" "print" (func $import2 (param f32)))
+  (import "spectest" "print" (func $import3 (param f64)))
+  (import "spectest" "print" (func $import4 (param i32 f32)))
+  (import "spectest" "print" (func $import5 (param f64 f64)))
+  (import "spectest" "print" (func $import6 (param i32)))
+  (import "spectest" "print" (func $import7 (param f64)))
+  (import "test" "func-i64->i64" (func $import8 (param i64) (result i64)))
+  (import "spectest" "print" (func $import9 (param i32)))
+  (import "spectest" "print" (func $import10 (param i32)))
+  (import "spectest" "print" (func $import11 (param i32)))
+  (import "spectest" "print" (func $import12 (param i32)))
+  (import "spectest" "print" (func $import13 (param i32)))
+  (import "spectest" "print" (func $import14 (param i32)))
+  (import "spectest" "print" (func $import15 (param i32)))
+  (table $table0 2 2 anyfunc)
+  (export "p1" (func $import9))
+  (export "p2" (func $import10))
+  (export "p4" (func $import11))
+  (export "p3" (func $import11))
+  (export "p5" (func $import12))
+  (export "p6" (func $import13))
+  (export "print32" (func $func16))
+  (export "print64" (func $func17))
+  (elem (i32.const 0) $import1 $import3)
+  (func $func16 (param $var0 i32)
+    (local $var1 f32)
+    get_local $var0
+    f32.convert_s/i32
+    set_local $var1
+    get_local $var0
+    call $import0
+    get_local $var0
+    i32.const 1
+    i32.add
+    f32.const 0x1.500000p5
+    call $import4
+    get_local $var0
+    call $import1
+    get_local $var0
+    call $import6
+    get_local $var1
+    call $import2
+    get_local $var0
+    i32.const 0
+    call_indirect $type0
+  )
+  (func $func17 (param $var0 i64)
+    (local $var1 f64)
+    get_local $var0
+    call $import8
+    f64.convert_s/i64
+    set_local $var1
+    get_local $var1
+    f64.const 0x1.0000000000000p0
+    f64.add
+    f64.const 0x1.a800000000000p5
+    call $import5
+    get_local $var1
+    call $import3
+    get_local $var1
+    call $import7
+    get_local $var1
+    i32.const 1
+    call_indirect $type3
+  )
+)
