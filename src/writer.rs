@@ -194,8 +194,7 @@ impl<'a> Writer<'a> {
         self.w().write_all(bytes)
     }
 
-    fn write_string(&mut self, bytes: &[u8]) -> Result<()> {
-        self.write_bytes(b"\"")?;
+    fn write_string_chunk(&mut self, bytes: &[u8]) -> Result<()> {
         let mut i = 0;
         let mut j = 0;
         while i < bytes.len() {
@@ -212,6 +211,12 @@ impl<'a> Writer<'a> {
         if j < bytes.len() {
             self.write_bytes(&bytes[j..])?;
         }
+        Ok(())
+    }
+
+    fn write_string(&mut self, bytes: &[u8]) -> Result<()> {
+        self.write_bytes(b"\"")?;
+        self.write_string_chunk(bytes)?;
         self.write_bytes(b"\"")?;
         Ok(())
     }
@@ -265,7 +270,7 @@ impl<'a> Writer<'a> {
     }
 
     fn write_global_type(&mut self, global_type: &GlobalType) -> Result<()> {
-        if global_type.mutability == 0 {
+        if !global_type.mutable {
             return self.write_type(global_type.content_type);
         }
         self.write_bytes(b"(mut ")?;
@@ -836,7 +841,7 @@ impl<'a> Writer<'a> {
             ParserState::EndGlobalSectionEntry => {
                 self.write_bytes(b")\n")?;
             }
-            ParserState::BeginFunctionBody { ref locals, .. } => {
+            ParserState::BeginFunctionBody { .. } => {
                 self.write_bytes(b"  (func ")?;
                 let is_import = self.func_index < self.import_count;
                 let index = self.func_index as u32;
@@ -856,8 +861,15 @@ impl<'a> Writer<'a> {
                     self.write_bytes(b")")?;
                 }
                 self.write_bytes(b"\n")?;
+                self.indent = 0;
+                self.label_index = 0;
+            }
+            ParserState::FunctionBodyLocals { ref locals } => {
                 if locals.len() > 0 {
                     self.write_bytes(b"   ")?;
+                    let index = self.func_index as u32;
+                    let func_type_index = self.func_types[self.func_index] as usize;
+                    let func_type: FuncType = self.types[func_type_index].clone();
                     let mut local_index = func_type.params.len();
                     for &(j, ty) in locals {
                         for _ in 0..j {
@@ -871,18 +883,20 @@ impl<'a> Writer<'a> {
                     }
                     self.write_bytes(b"\n")?;
                 }
-                self.indent = 0;
-                self.label_index = 0;
             }
             ParserState::EndFunctionBody => {
                 self.write_bytes(b"  )\n")?;
                 self.func_index += 1;
             }
             ParserState::CodeOperator(ref operator) => {
-                self.write_bytes(b"    ")?;
                 if let Operator::End = *operator {
+                    if self.indent == 0 {
+                        // Ignoring function's last end operator.
+                        return Ok(());
+                    }
                     self.indent -= 1;
                 }
+                self.write_bytes(b"    ")?;
                 let mut indent = self.indent;
                 if let Operator::Else = *operator {
                     indent -= 1;
@@ -902,9 +916,14 @@ impl<'a> Writer<'a> {
             ParserState::BeginDataSectionEntry(_) => {
                 self.write_bytes(b"  (data")?;
             }
-            ParserState::DataSectionEntryBody(data) => {
-                self.write_bytes(b"\n    ")?;
-                self.write_string(data)?;
+            ParserState::BeginDataSectionEntryBody(_) => {
+                self.write_bytes(b"\n    \"")?;
+            }
+            ParserState::DataSectionEntryBodyChunk(data) => {
+                self.write_string_chunk(data)?;
+            }
+            ParserState::EndDataSectionEntryBody => {
+                self.write_bytes(b"\"")?;
             }
             ParserState::EndDataSectionEntry => {
                 self.write_bytes(b"\n  )\n")?;
