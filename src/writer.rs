@@ -329,18 +329,15 @@ impl<'a> Writer<'a> {
         self.write_bytes(b")")
     }
 
-    fn write_memory_immediate(&mut self,
-                              memory_immediate: &MemoryImmediate,
-                              default_align_flags: u32)
-                              -> Result<()> {
-        if memory_immediate.offset != 0 {
+    fn write_memarg(&mut self, memarg: &MemoryImmediate, default_align_flags: u32) -> Result<()> {
+        if memarg.offset != 0 {
             self.write_bytes(b" offset=")?;
-            self.write_u32(memory_immediate.offset)?;
+            self.write_u32(memarg.offset)?;
         }
-        if memory_immediate.flags != default_align_flags {
+        if memarg.flags != default_align_flags {
             // hide default flags
             self.write_bytes(b" align=")?;
-            self.write_u32(1 << memory_immediate.flags)?;
+            self.write_u32(1 << memarg.flags)?;
         }
         Ok(())
     }
@@ -457,97 +454,97 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b"set_global ")?;
                 self.write_global_name_ref(global_index)
             }
-            Operator::I32Load { ref memory_immediate } => {
+            Operator::I32Load { ref memarg } => {
                 self.write_bytes(b"i32.load")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::I64Load { ref memory_immediate } => {
+            Operator::I64Load { ref memarg } => {
                 self.write_bytes(b"i64.load")?;
-                self.write_memory_immediate(memory_immediate, 3)
+                self.write_memarg(memarg, 3)
             }
-            Operator::F32Load { ref memory_immediate } => {
+            Operator::F32Load { ref memarg } => {
                 self.write_bytes(b"f32.load")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::F64Load { ref memory_immediate } => {
+            Operator::F64Load { ref memarg } => {
                 self.write_bytes(b"f64.load")?;
-                self.write_memory_immediate(memory_immediate, 3)
+                self.write_memarg(memarg, 3)
             }
-            Operator::I32Load8S { ref memory_immediate } => {
+            Operator::I32Load8S { ref memarg } => {
                 self.write_bytes(b"i32.load8_s")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I32Load8U { ref memory_immediate } => {
+            Operator::I32Load8U { ref memarg } => {
                 self.write_bytes(b"i32.load8_u")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I32Load16S { ref memory_immediate } => {
+            Operator::I32Load16S { ref memarg } => {
                 self.write_bytes(b"i32.load16_s")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I32Load16U { ref memory_immediate } => {
+            Operator::I32Load16U { ref memarg } => {
                 self.write_bytes(b"i32.load16_u")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I64Load8S { ref memory_immediate } => {
+            Operator::I64Load8S { ref memarg } => {
                 self.write_bytes(b"i64.load8_s")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I64Load8U { ref memory_immediate } => {
+            Operator::I64Load8U { ref memarg } => {
                 self.write_bytes(b"i64.load8_u")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I64Load16S { ref memory_immediate } => {
+            Operator::I64Load16S { ref memarg } => {
                 self.write_bytes(b"i64.load16_s")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I64Load16U { ref memory_immediate } => {
+            Operator::I64Load16U { ref memarg } => {
                 self.write_bytes(b"i64.load16_u")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I64Load32S { ref memory_immediate } => {
+            Operator::I64Load32S { ref memarg } => {
                 self.write_bytes(b"i64.load32_s")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::I64Load32U { ref memory_immediate } => {
+            Operator::I64Load32U { ref memarg } => {
                 self.write_bytes(b"i64.load32_u")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::I32Store { ref memory_immediate } => {
+            Operator::I32Store { ref memarg } => {
                 self.write_bytes(b"i32.store")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::I64Store { ref memory_immediate } => {
+            Operator::I64Store { ref memarg } => {
                 self.write_bytes(b"i64.store")?;
-                self.write_memory_immediate(memory_immediate, 3)
+                self.write_memarg(memarg, 3)
             }
-            Operator::F32Store { ref memory_immediate } => {
+            Operator::F32Store { ref memarg } => {
                 self.write_bytes(b"f32.store")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
-            Operator::F64Store { ref memory_immediate } => {
+            Operator::F64Store { ref memarg } => {
                 self.write_bytes(b"f64.store")?;
-                self.write_memory_immediate(memory_immediate, 3)
+                self.write_memarg(memarg, 3)
             }
-            Operator::I32Store8 { ref memory_immediate } => {
+            Operator::I32Store8 { ref memarg } => {
                 self.write_bytes(b"i32.store8")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I32Store16 { ref memory_immediate } => {
+            Operator::I32Store16 { ref memarg } => {
                 self.write_bytes(b"i32.store16")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I64Store8 { ref memory_immediate } => {
+            Operator::I64Store8 { ref memarg } => {
                 self.write_bytes(b"i64.store8")?;
-                self.write_memory_immediate(memory_immediate, 0)
+                self.write_memarg(memarg, 0)
             }
-            Operator::I64Store16 { ref memory_immediate } => {
+            Operator::I64Store16 { ref memarg } => {
                 self.write_bytes(b"i64.store16")?;
-                self.write_memory_immediate(memory_immediate, 1)
+                self.write_memarg(memarg, 1)
             }
-            Operator::I64Store32 { ref memory_immediate } => {
+            Operator::I64Store32 { ref memarg } => {
                 self.write_bytes(b"i64.store32")?;
-                self.write_memory_immediate(memory_immediate, 2)
+                self.write_memarg(memarg, 2)
             }
             Operator::CurrentMemory { .. } => self.write_bytes(b"current_memory"),
             Operator::GrowMemory { .. } => self.write_bytes(b"grow_memory"),
@@ -690,6 +687,14 @@ impl<'a> Writer<'a> {
             Operator::I64ReinterpretF64 => self.write_bytes(b"i64.reinterpret/f64"),
             Operator::F32ReinterpretI32 => self.write_bytes(b"f32.reinterpret/i32"),
             Operator::F64ReinterpretI64 => self.write_bytes(b"f64.reinterpret/i64"),
+            Operator::I32TruncSSatF32 => self.write_bytes(b"i32.trunc_s:sat/f32"),
+            Operator::I32TruncUSatF32 => self.write_bytes(b"i32.trunc_u:sat/f32"),
+            Operator::I32TruncSSatF64 => self.write_bytes(b"i32.trunc_s:sat/f64"),
+            Operator::I32TruncUSatF64 => self.write_bytes(b"i32.trunc_u:sat/f64"),
+            Operator::I64TruncSSatF32 => self.write_bytes(b"i64.trunc_s:sat/f32"),
+            Operator::I64TruncUSatF32 => self.write_bytes(b"i64.trunc_u:sat/f32"),
+            Operator::I64TruncSSatF64 => self.write_bytes(b"i64.trunc_s:sat/f64"),
+            Operator::I64TruncUSatF64 => self.write_bytes(b"i64.trunc_u:sat/f64")
         }
     }
 
