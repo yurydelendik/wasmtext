@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-use std::str;
 use std::io::Write;
 use std::io::Result;
 
@@ -694,7 +693,276 @@ impl<'a> Writer<'a> {
             Operator::I64TruncSSatF32 => self.write_bytes(b"i64.trunc_s:sat/f32"),
             Operator::I64TruncUSatF32 => self.write_bytes(b"i64.trunc_u:sat/f32"),
             Operator::I64TruncSSatF64 => self.write_bytes(b"i64.trunc_s:sat/f64"),
-            Operator::I64TruncUSatF64 => self.write_bytes(b"i64.trunc_u:sat/f64")
+            Operator::I64TruncUSatF64 => self.write_bytes(b"i64.trunc_u:sat/f64"),
+            Operator::I32Extend8S => self.write_bytes(b"i32.extend8_s"),
+            Operator::I32Extend16S => self.write_bytes(b"i32.extend16_s"),
+            Operator::I64Extend8S => self.write_bytes(b"i64.extend8_s"),
+            Operator::I64Extend16S => self.write_bytes(b"i64.extend16_s"),
+            Operator::I64Extend32S => self.write_bytes(b"i64.extend32_s"),
+            Operator::Wake { ref memarg } => {
+                self.write_bytes(b"atomic.wake")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32Wait { ref memarg } => {
+                self.write_bytes(b"i32.atomic.wait")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64Wait { ref memarg } => {
+                self.write_bytes(b"i64.atomic.wait")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicLoad { ref memarg } => {
+                self.write_bytes(b"i32.atomic.load")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicLoad { ref memarg } => {
+                self.write_bytes(b"i64.atomic.load")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicLoad8U { ref memarg } => {
+                self.write_bytes(b"i32.atomic.load8_u")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicLoad16U { ref memarg } => {
+                self.write_bytes(b"i32.atomic.load16_u")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicLoad8U { ref memarg } => {
+                self.write_bytes(b"i64.atomic.load8_u")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicLoad16U { ref memarg } => {
+                self.write_bytes(b"i64.atomic.load16_u")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicLoad32U { ref memarg } => {
+                self.write_bytes(b"i64.atomic.load32_u")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicStore { ref memarg } => {
+                self.write_bytes(b"i32.atomic.store")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicStore { ref memarg } => {
+                self.write_bytes(b"i64.atomic.store")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicStore8 { ref memarg } => {
+                self.write_bytes(b"i32.atomic.store8")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicStore16 { ref memarg } => {
+                self.write_bytes(b"i32.atomic.store16")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicStore8 { ref memarg } => {
+                self.write_bytes(b"i64.atomic.store8")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicStore16 { ref memarg } => {
+                self.write_bytes(b"i64.atomic.store16")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicStore32 { ref memarg } => {
+                self.write_bytes(b"i64.atomic.store32")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwAdd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.add")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwAdd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.add")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UAdd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.add")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UAdd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.add")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UAdd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.add")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UAdd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.add")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UAdd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.add")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwSub { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.sub")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwSub { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.sub")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8USub { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.sub")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16USub { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.sub")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8USub { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.sub")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16USub { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.sub")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32USub { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.sub")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwAnd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.and")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwAnd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.and")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UAnd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.and")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UAnd { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.and")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UAnd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.and")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UAnd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.and")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UAnd { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.and")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwOr { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.or")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwOr { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.or")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UOr { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.or")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UOr { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.or")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UOr { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.or")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UOr { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.or")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UOr { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.or")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwXor { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.xor")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwXor { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.xor")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UXor { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.xor")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UXor { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.xor")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UXor { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.xor")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UXor { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.xor")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UXor { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.xor")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwXchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.xchg")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwXchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.xchg")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UXchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.xchg")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UXchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.xchg")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UXchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.xchg")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UXchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.xchg")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UXchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.xchg")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I32AtomicRmwCmpxchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw.cmpxchg")?;
+                self.write_memarg(memarg, 2)
+            }
+            Operator::I64AtomicRmwCmpxchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw.cmpxchg")?;
+                self.write_memarg(memarg, 3)
+            }
+            Operator::I32AtomicRmw8UCmpxchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw8_u.cmpxchg")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I32AtomicRmw16UCmpxchg { ref memarg } => {
+                self.write_bytes(b"i32.atomic.rmw16_u.cmpxchg")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw8UCmpxchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw8_u.cmpxchg")?;
+                self.write_memarg(memarg, 0)
+            }
+            Operator::I64AtomicRmw16UCmpxchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw16_u.cmpxchg")?;
+                self.write_memarg(memarg, 1)
+            }
+            Operator::I64AtomicRmw32UCmpxchg { ref memarg } => {
+                self.write_bytes(b"i64.atomic.rmw32_u.cmpxchg")?;
+                self.write_memarg(memarg, 2)
+            }
         }
     }
 
@@ -823,13 +1091,16 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b")\n")?;
 
             }
-            ParserState::MemorySectionEntry(MemoryType { ref limits }) => {
+            ParserState::MemorySectionEntry(MemoryType { ref limits, shared }) => {
                 let index = self.memory_count as u32;
                 self.memory_count += 1;
                 self.write_bytes(b"  (memory ")?;
                 self.write_bytes(&get_memory_name(index, false))?;
                 self.write_bytes(b" ")?;
                 self.write_limits(limits)?;
+                if shared {
+                    self.write_bytes(b" shared")?;
+                }
                 self.write_bytes(b")\n")?;
             }
             ParserState::FunctionSectionEntry(index) => {

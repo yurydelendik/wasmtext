@@ -1,7 +1,7 @@
 [package]
 name = "wasmtext"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Yury Delendik <ydelendik@mozilla.com>"]
 
 [dependencies]
-wasmparser = "0.13.0"
+wasmparser = "0.14.1"
