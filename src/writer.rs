@@ -1232,6 +1232,7 @@ impl<'a> Writer<'a> {
             ParserState::RelocSectionHeader(_) |
             ParserState::RelocSectionEntry(_) |
             ParserState::SourceMappingURL(_) |
+            ParserState::SectionRawData(_) |
             ParserState::LinkingSectionEntry(_) => {}
             _ => unreachable!(),
         }
