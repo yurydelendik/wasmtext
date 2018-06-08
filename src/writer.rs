@@ -545,8 +545,8 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b"i64.store32")?;
                 self.write_memarg(memarg, 2)
             }
-            Operator::CurrentMemory { .. } => self.write_bytes(b"current_memory"),
-            Operator::GrowMemory { .. } => self.write_bytes(b"grow_memory"),
+            Operator::MemorySize { .. } => self.write_bytes(b"memory.size"),
+            Operator::MemoryGrow { .. } => self.write_bytes(b"memory.grow"),
             Operator::I32Const { value } => {
                 self.write_bytes(b"i32.const ")?;
                 self.write_i32(value)

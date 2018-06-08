@@ -7,7 +7,7 @@
   (export "load" (func $func2))
   (export "grow_memory" (func $func3))
   (func $func0 (result i32)
-    current_memory
+    memory.size
     i32.const 65536
     i32.mul
   )
@@ -26,6 +26,6 @@
   )
   (func $func3 (param $var0 i32) (result i32)
     get_local $var0
-    grow_memory
+    memory.grow
   )
 )
