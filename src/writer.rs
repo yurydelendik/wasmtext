@@ -963,6 +963,12 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b"i64.atomic.rmw32_u.cmpxchg")?;
                 self.write_memarg(memarg, 2)
             }
+            Operator::RefNull => {
+                self.write_bytes(b"ref.null")
+            }
+            Operator::RefIsNull => {
+                self.write_bytes(b"ref.isnull")
+            }
         }
     }
 
@@ -1147,7 +1153,7 @@ impl<'a> Writer<'a> {
                     let func_type_index = self.func_types[self.func_index] as usize;
                     let func_type: FuncType = self.types[func_type_index].clone();
                     let mut local_index = func_type.params.len();
-                    for &(j, ty) in locals {
+                    for &(j, ty) in locals.iter() {
                         for _ in 0..j {
                             self.write_bytes(b" (local ")?;
                             self.write_bytes(&get_var_name(index, local_index as u32, false))?;
@@ -1223,9 +1229,9 @@ impl<'a> Writer<'a> {
                 self.write_bytes(b")\n")?;
             }
             ParserState::ElementSectionEntryBody(ref elements) => {
-                for index in elements.clone() {
+                for index in elements.iter() {
                     self.write_bytes(b" ")?;
-                    self.write_func_name_ref(index)?;
+                    self.write_func_name_ref(*index)?;
                 }
             }
             ParserState::NameSectionEntry(_) |
